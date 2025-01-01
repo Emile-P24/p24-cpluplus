@@ -5,28 +5,44 @@ class IntStack
 {
 private:
     int SIZE;
-    int* ti; // Comme un tableau normal mais stocké dans la "mémoire dynamique", le "Heap".Il faut supprimer avec delete[]ti; pour libérer l'espace mémoire.
+    int *ti; // Comme un tableau normal mais stocké dans la "mémoire dynamique", le "Heap".Il faut supprimer avec delete[]ti; pour libérer l'espace mémoire.
     int pos;
 
 public:
-
-    IntStack(int s):pos(0),SIZE(s){
+    IntStack(int s) : pos(0), SIZE(s)
+    {
         ti = new int[SIZE];
     }
 
-    IntStack(const IntStack& r):pos(r.pos),SIZE(r.SIZE){ // Constructeur de copie, permet de faire IntStack j(i); pour initialiser j avec i.
+    IntStack(const IntStack &r) : pos(r.pos), SIZE(r.SIZE)
+    { // Constructeur de copie, permet de faire IntStack j(i); pour initialiser j avec i.
         ti = new int[SIZE];
-        for (int i = 0; i < pos; i++){
-            *(ti +1) = *(r + 1)
+        for (int i = 0; i < pos; i++)
+        {
+            *(ti + i) = r.ti[i];
         }
     }
 
-    IntStack operateur=(const IntStack& r){
+    IntStack &operator=(const IntStack &r)
+    {
+        if (this != &r)
+        {
+            delete[] ti;
 
+            SIZE = r.SIZE;
+            pos = r.pos;
+            ti = new int[SIZE];
+            for (int i = 0; i < pos; i++)
+            {
+                ti[i] = r.ti[i];
+            }
+        }
+        return *this;
     }
 
-    ~IntStack(){
-        delete[]ti;
+    ~IntStack()
+    {
+        delete[] ti;
     }
 
     void push(int e)
@@ -97,6 +113,6 @@ int main()
     s1.print();                         // affichera [1 2 3 ]
     std::cout << s1.pop() << std::endl; // affichera 3
     s1.print();                         // affichera [1 2 ]
-    
+
     return 0;
 }
