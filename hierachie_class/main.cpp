@@ -1,6 +1,5 @@
 #include "Shape.h"
 
-// Définition des méthodes
 
 std::pair<int, int> Shape::position() const
 {
@@ -52,7 +51,6 @@ Shape *find_at_position(int xf, int yf, const std::vector<Shape *> &v)
     return nullptr;
 }
 
-// Fonction principale
 int main()
 {
     Circle c(0, 0, 1);
