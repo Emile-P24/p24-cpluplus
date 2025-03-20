@@ -47,7 +47,7 @@ public:
 
     void push(int e)
     {
-        // cette fonction ajoute l'entier e dans la pile
+        // Ajoute l'entier e dans la pile
         if (is_full() == false)
         {
             *(ti + pos) = e;
@@ -83,15 +83,13 @@ public:
     }
     bool is_full()
     {
-        // cette fonction teste si la pile est pleine
-        // il y a SIZE entiers dans la pile
+        // teste si la pile est pleine
+        //SIZE entiers dans la pile
         return pos == SIZE;
     }
     void print()
     {
-        // cette fonction affiche la pile, par exemple
-        // [1 2 3 [ pour dire que 3 entiers sont dans la pile
-        // le dernier empilé est 3
+        // affiche la pile
         std::cout << "[ ";
         for (int i = 0; i < pos; i++)
         {
@@ -104,15 +102,15 @@ public:
 int main()
 {
     IntStack s1(10);
-    s1.print(); // affichera []
+    s1.print(); // affiche []
     s1.push(1);
     s1.push(2);
     s1.push(3);
     s1.push(4);
     s1.push(5);
-    s1.print();                         // affichera [1 2 3 ]
-    std::cout << s1.pop() << std::endl; // affichera 3
-    s1.print();                         // affichera [1 2 ]
+    s1.print();                         // affiche [1 2 3 ]
+    std::cout << s1.pop() << std::endl; // affiche 3
+    s1.print();                         // affiche [1 2 ]
 
     return 0;
 }
